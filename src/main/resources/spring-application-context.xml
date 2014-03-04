@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"		
+	xmlns:util="http://www.springframework.org/schema/util" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd		
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+		
+
+	<context:annotation-config />
+	
+	<context:component-scan base-package="com.rest" />
+	
+	<bean id="employeeRestController" class="com.rest.controller.EmployeeRestController">
+		<property name="employeeService" ref="employeeService"/>
+	</bean>		
+
+	<bean id="employeeService" class="com.rest.services.EmployeeService"/>	
+	
+	<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">
+		<property name="contentType" value="application/json" />
+	</bean>
+
+	
+	<!-- Register JSON Converter for RESTful Web Service -->
+	<bean id="handlerAdapter"
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+		        <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+		            <property name="supportedMediaTypes">
+		                <array>
+		                    <util:constant static-field="org.springframework.http.MediaType.TEXT_PLAIN" />
+		                </array>
+		            </property>
+		        </bean>			
+				<bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
+				<bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+
+</beans>
