@@ -19,7 +19,7 @@ public class EmployeeRestController {
 	}
 
     @RequestMapping(method = RequestMethod.GET, value = "/employee/getdetail")
-    public @ResponseBody Employee execute(
+    public @ResponseBody Employee getDetail(
     		@RequestParam(value="empId", required=false, defaultValue="1") Integer empId){
     	
     	return employeeService.getEmpDetail(empId);
