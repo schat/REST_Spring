@@ -7,7 +7,7 @@ import com.rest.domain.Employee;
 @Service  
 public class EmployeeService {  
   
-     public Employee getEmpDetail(String empId) {  
+     public Employee getEmpDetail(Integer empId) {  
     	 
           Employee emp = new Employee();  
   
@@ -16,7 +16,6 @@ public class EmployeeService {
           emp.setEmpDept("Test Dept");
           emp.setSalary(80000.00);
             
-          System.out.println(emp);
           return emp;  
      }  
   

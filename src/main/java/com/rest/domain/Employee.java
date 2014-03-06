@@ -3,7 +3,7 @@ package com.rest.domain;
 
 public class Employee{  
   
-     private String empId;  
+     private Integer empId;  
      private String empName;  
      private String empDept;    
      private Double salary;
@@ -13,13 +13,13 @@ public class Employee{
   
      
       
-     public String getEmpId() {
+     public Integer getEmpId() {
 		return empId;
 	}
 
 
 
-	public void setEmpId(String empId) {
+	public void setEmpId(Integer empId) {
 		this.empId = empId;
 	}
 

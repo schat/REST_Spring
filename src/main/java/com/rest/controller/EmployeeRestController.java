@@ -1,11 +1,12 @@
 package com.rest.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.rest.domain.Employee;
 import com.rest.services.EmployeeService;
 
 @Controller
@@ -17,11 +18,11 @@ public class EmployeeRestController {
 		this.employeeService = employeeService;
 	}
 
-    @RequestMapping(method = RequestMethod.GET, value = "/employee/getdetail/{empId}")
-    public @ResponseBody
-    String execute(@PathVariable("empId") String empId) {      
-
-    	return employeeService.getEmpDetail(empId).toString();
+    @RequestMapping(method = RequestMethod.GET, value = "/employee/getdetail")
+    public @ResponseBody Employee execute(
+    		@RequestParam(value="empId", required=false, defaultValue="1") Integer empId){
+    	
+    	return employeeService.getEmpDetail(empId);
     	
     }
 
