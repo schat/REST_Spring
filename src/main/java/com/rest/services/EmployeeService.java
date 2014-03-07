@@ -1,10 +1,7 @@
 package com.rest.services;
 
-import org.springframework.stereotype.Service;  
-
 import com.rest.domain.Employee;
- 
-@Service  
+
 public class EmployeeService {  
   
      public Employee getEmpDetail(Integer empId) {  
